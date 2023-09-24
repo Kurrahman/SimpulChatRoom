@@ -1,0 +1,55 @@
+<div class='row'>
+    <div class='room-name'>
+        <%= @room.name %>
+    </div>
+</div>
+
+<div class='row room-container'>
+    <div class='col-12 col-md-3 identity'>
+        <span>Chatting as : </span>
+        <% if room_member_session(@room.id) %>
+            <%= @room_member.name %>
+        <% else %>
+            <%= form_with model: @room_member, :url => "/room_member", remote: true do |form| %>
+                <%= form.text_field :name, :value => "", as: :string %>
+                <%= form.submit 'Save' %>
+                <%= form.hidden_field :room_id, :value => @room.id%>
+            <% end %>
+        <% end %>
+        <div class='room-members'>
+            <p>Room Members : </p>
+            <% @room_members.each do |room_member|%>
+                <div>
+                    <%= room_member.name %>
+                </div>
+            <%end%>
+        </div>
+    </div>
+
+    <div class='col room'>
+        <div class='room-chat'>
+            <div class='room-messages' data-channel-subscribe="room" data-room-id='<%=@room.id%>'>
+                <% @room_messages.each do |room_message| %>
+                    <div class='chat'>
+                        <small class='sender'>
+                            <%= room_message.sender_name %>
+                        </small>
+                        <p class='message'>
+                            <%= room_message.message %>
+                        </p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class='chat-input'>
+            <%= form_with model: @room_message, remote: true do |form| %>
+                <%= form.text_field :message, as: :string,
+                        wrapper: false,
+                        label: false,
+                        class: 'text-input' %>
+                <%= form.submit 'Send', class: 'send-btn' %>
+                <%= form.hidden_field :room_id, :value => @room.id%>
+            <% end %>
+        </div>
+    </div>
+</div>

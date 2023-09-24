@@ -1,0 +1,30 @@
+<div class='row'>
+    <div class='room-name'>
+        Simple Chat Room
+    </div>
+</div>
+<div class='room-container'>
+    <%= form_with model: @room, :url => "/rooms" do |form| %>
+        <%= form.label :name, "Create/Join Room :" %>
+        <%= form.text_field :name %>
+        <%= form.submit "Create/Join" %>
+    <% end %>
+</div>
+
+<% 
+=begin
+ %>
+<% if @rooms.present? %>
+    <nav class="nav flex-column">
+        <% @rooms.each do |room| %>
+        <%= link_to room.name, room_path(room.name), class: "nav-link room-nav-link" %>
+        <% end %>
+    </nav>
+    <% else %>
+    <div class="text-muted">
+        The are no rooms
+    </div>
+<% end %>
+<%
+=end
+ %>

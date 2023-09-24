@@ -1,0 +1,54 @@
+.room-name {
+    width: 100%;
+    background-color: #6499E9;
+
+    padding-left: 30px;
+    margin-bottom: 20px;
+
+    font-size: 50px;
+    font-weight: 600;
+};
+
+.room-container {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+};
+
+.identity {
+    border: 1px solid #6499E9;
+    height: 75vh;
+    border-radius: 5px 5px 5px 5px;
+    background-color: aqua;
+}
+
+.room-members {
+    margin-top: 20px;
+}
+
+.room-chat {
+    border: 1px solid #6499E9;
+    height: 75vh;
+    border-radius: 5px 5px 0 0;
+    background-color: aqua;
+    overflow-y: scroll;
+}
+
+.text-input {
+    width: 100%;
+    margin-right: -75px;
+    border-radius: 0 0 5px 5px;
+}
+
+.send-btn {
+    width: 70px;
+}
+
+.chat {
+    background-color: #BEFFF7;
+    border-radius: 25px;
+    margin: 0px 15px;
+    padding: 0px 30px;
+    overflow-x: visible;
+    overflow-wrap: break-word;
+}
